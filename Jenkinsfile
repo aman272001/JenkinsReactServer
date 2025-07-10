@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('git') {
             steps {
-				git 'https://github.com/aman272001/JenkinsReactServer.git'
+			checkout scm		
+		        git 'https://github.com/aman272001/JenkinsReactServer.git'
             }
         }
        stage('Build') {
