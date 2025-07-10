@@ -1,11 +1,15 @@
 pipeline {
 	agent any
     stages {
-        stage('Build') {
+        stage('git') {
+            steps {
+				git 'https://github.com/aman272001/JenkinsReactServer.git'
+            }
+        }
+       stage('Build') {
             steps {
 			    echo 'Building..'
-				checkout scm
-				bat 'npm install'
+				sh 'npm install'
             }
         }
         stage('Test') {
@@ -16,7 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-				bat 'npm run build'
+				sh 'npm run build'
             }
         }
     }
