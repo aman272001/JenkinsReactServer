@@ -1,16 +1,11 @@
 pipeline {
 	agent any
     stages {
-        stage('git') {
+        stage('Build') {
             steps {
-			checkout scm		
-		        git 'https://github.com/aman272001/JenkinsReactServer.git'
-            }
-        }
-       stage('Build') {
-            steps {
-			    echo 'Building..'
-				sh 'npm install'
+			echo 'Building..'
+		    	checkout scm
+			sh 'npm install'
             }
         }
         stage('Test') {
